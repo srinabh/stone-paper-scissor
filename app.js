@@ -1,9 +1,9 @@
-const userScore=0;
-const computerScore=0;
+let userScore=0;
+let computerScore=0;
 const userScore_Span= document.getElementById('user-score');
 const computerScore_Span= document.getElementById('computer-score');
 const scoreBoard_Div= document.querySelector(".scoreboard");
-const result_Div = document.querySelector(".result");
+const result_p = document.querySelector(".result > p");
 const rock_Div = document.getElementById('r');
 const paper_Div = document.getElementById('p');
 const scissors_Div = document.getElementById('s');
@@ -28,22 +28,43 @@ function game(userChoice){
 function game(userChoice){
   const computerChoice = getComputerChoices();
   switch(userChoice+computerChoice){
-    case "rp":
+    case "rs":
     case "pr":
     case "sp":
-      console.log("User Wins");
+      //console.log("User Wins");
       break;
     case "rp":
     case "ps":
     case "sr":
-      console.log("User looses");
+    Loose(userChoice, computerChoice);
+      //console.log("User looses");
       break;
       case "rr":
       case "pp":
       case "ss":
-        console.log("It's a draw");
+      Draws();
+        //console.log("It's a draw");
   }
 }
+
+function Win(userChoice, computerChoice){
+  userScore++;
+  userScore_Span.innerHTML = userScore;
+  computerScore_Span.innerText = computerScore;
+  console.log(user);
+  console.log(computer);
+  result_p.innerHTML = userChoice + 'beats ' + computerChoice + 'You Win!!!!';
+  //console.log("WINS");
+}
+
+function Loose(){
+  //console.log("LOOSE");
+}
+
+function Draws(){
+  console.log("DRAWS");
+}
+
 
 function main(){
   rock_Div.addEventListener('click',function(){
