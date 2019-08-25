@@ -31,6 +31,7 @@ function game(userChoice){
     case "rs":
     case "pr":
     case "sp":
+      Win(userChoice, computerChoice);
       //console.log("User Wins");
       break;
     case "rp":
