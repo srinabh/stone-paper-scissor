@@ -20,7 +20,6 @@ function getComputerChoices(){
   else return 's';
 }
 
-console.log(getComputerChoices());
 function game(userChoice){
   const computerChoice = getComputerChoices();
 }
@@ -45,17 +44,29 @@ function game(userChoice){
   }
 }
 
+function formattedNames(input)
+{
+  switch (input){
+    case 's':
+    return 'Scissor';
+      break;
+    case 'p': return 'Paper';
+      break;
+    case 'r': return 'Rock';
+      break;
+  }
+}
+
 function Win(userChoice, computerChoice){
   userScore++;
   userScore_Span.innerHTML = userScore;
-  result_p.innerHTML = userChoice + 'beats ' + computerChoice + 'You Win!!!!';
-  console.log("WINS");
+  result_p.innerHTML = formattedNames(userChoice) + ' beats ' + formattedNames(computerChoice) + '!! You Win🔥🔥🔥🔥';
 }
 
-function Loose(){
+function Loose(userChoice, computerChoice){
   computerScore++;
   computerScore_Span.innerHTML = computerScore;
-  console.log("LOOSE");
+  result_p.innerHTML = formattedNames(computerChoice) + ' beats ' + formattedNames(userChoice) + '!!  You Loose💩💩💩💩';
 }
 
 function Draws(){
