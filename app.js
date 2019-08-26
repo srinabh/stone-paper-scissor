@@ -1,7 +1,7 @@
 let userScore=0;
 let computerScore=0;
 const userScore_Span= document.getElementById('user-score');
-const computerScore_Span= document.getElementById('computer-score');
+const computerScore_Span= document.getElementById('comp-score');
 const scoreBoard_Div= document.querySelector(".scoreboard");
 const result_p = document.querySelector(".result > p");
 const rock_Div = document.getElementById('r');
@@ -32,34 +32,30 @@ function game(userChoice){
     case "pr":
     case "sp":
       Win(userChoice, computerChoice);
-      //console.log("User Wins");
       break;
     case "rp":
     case "ps":
     case "sr":
     Loose(userChoice, computerChoice);
-      //console.log("User looses");
       break;
       case "rr":
       case "pp":
       case "ss":
       Draws();
-        //console.log("It's a draw");
   }
 }
 
 function Win(userChoice, computerChoice){
   userScore++;
   userScore_Span.innerHTML = userScore;
-  computerScore_Span.innerText = computerScore;
-  console.log(user);
-  console.log(computer);
   result_p.innerHTML = userChoice + 'beats ' + computerChoice + 'You Win!!!!';
-  //console.log("WINS");
+  console.log("WINS");
 }
 
 function Loose(){
-  //console.log("LOOSE");
+  computerScore++;
+  computerScore_Span.innerHTML = computerScore;
+  console.log("LOOSE");
 }
 
 function Draws(){
