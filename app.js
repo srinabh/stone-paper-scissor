@@ -8,6 +8,10 @@ const rock_Div = document.getElementById('r');
 const paper_Div = document.getElementById('p');
 const scissors_Div = document.getElementById('s');
 let snackbar_Div = document.getElementById('snackbar');
+const streak_span = document.getElementById('streak-count');
+const token_span = document.getElementById('token-count');
+let streak=0;
+let token=10;
 
 function getComputerChoices(){
   const choices = [('r','p','s')];
@@ -21,11 +25,18 @@ function getComputerChoices(){
   else return 's';
 }
 
-function game(userChoice){
-  const computerChoice = getComputerChoices();
+
+function notEnoughTokens() {
+  showSnackbarMessage('Not Enough Tokens', 0.7);
+  result_p.innerHTML = 'Not enough Tokens!💲💵';
 }
 
 function game(userChoice){
+  if (token <= 0){
+    return notEnoughTokens();
+  }
+  token--;
+  updateToken();
   const computerChoice = getComputerChoices();
   switch(userChoice+computerChoice){
     case "rs":
@@ -63,10 +74,18 @@ function Win(userChoice, computerChoice){
   userScore_Span.innerHTML = userScore;
   //result_p.innerHTML = formattedNames(userChoice) + ' beats ' + formattedNames(computerChoice) + '!! You Win🔥🔥🔥🔥';----> For ES5
   result_p.innerHTML = `${formattedNames(userChoice)} beats ${formattedNames(computerChoice)}!!  You Win!🔥🔥🔥🔥`;
+  streak++;
+  streak_span.innerHTML = streak;
+}
+
+function updateToken(){
+  token_span.innerHTML = token;
 }
 
 function Loose(userChoice, computerChoice){
   computerScore++;
+  streak=0;
+  streak_span.innerHTML = streak;
   computerScore_Span.innerHTML = computerScore;
   //result_p.innerHTML = formattedNames(computerChoice) + ' beats ' + formattedNames(userChoice) + '!!  You Loose💩💩💩💩'; ----> For ES5
   result_p.innerHTML = `${(formattedNames(computerChoice))} beats ${(formattedNames(userChoice))}!!  You Loose!💩💩💩💩`;
@@ -80,15 +99,19 @@ function Draws(){
 function main(){
   rock_Div.addEventListener('click',function(){
     game("r");
+    if (token != 0){
     showSnackbarMessage('You Choose Rock! 🥊', 0.5);
+  }
   })
   paper_Div.addEventListener('click',function(){
     game("p");
-    showSnackbarMessage('You Choose Paper! 📰', 0.5);
+    if (token != 0){
+    showSnackbarMessage('You Choose Paper! 📰', 0.5);}
   })
   scissors_Div.addEventListener('click',function(){
     game("s");
-    showSnackbarMessage('You Choose Scissor! ✂', 0.5);
+    if (token != 0){
+    showSnackbarMessage('You Choose Scissor! ✂', 0.5);}
   })
 }
 main();
