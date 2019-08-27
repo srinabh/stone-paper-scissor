@@ -48,11 +48,11 @@ function formattedNames(input)
 {
   switch (input){
     case 's':
-    return 'Scissor';
+    return 'Scissor ✂';
       break;
-    case 'p': return 'Paper';
+    case 'p': return 'Paper 📰';
       break;
-    case 'r': return 'Rock';
+    case 'r': return 'Rock🥊';
       break;
   }
 }
@@ -60,18 +60,20 @@ function formattedNames(input)
 function Win(userChoice, computerChoice){
   userScore++;
   userScore_Span.innerHTML = userScore;
-  result_p.innerHTML = formattedNames(userChoice) + ' beats ' + formattedNames(computerChoice) + '!! You Win🔥🔥🔥🔥';
+  //result_p.innerHTML = formattedNames(userChoice) + ' beats ' + formattedNames(computerChoice) + '!! You Win🔥🔥🔥🔥';----> For ES5
+  result_p.innerHTML = `${formattedNames(userChoice)} beats ${formattedNames(computerChoice)}!!  You Win!🔥🔥🔥🔥`;
 }
 
 function Loose(userChoice, computerChoice){
   computerScore++;
   computerScore_Span.innerHTML = computerScore;
-  result_p.innerHTML = formattedNames(computerChoice) + ' beats ' + formattedNames(userChoice) + '!!  You Loose💩💩💩💩';
+  //result_p.innerHTML = formattedNames(computerChoice) + ' beats ' + formattedNames(userChoice) + '!!  You Loose💩💩💩💩'; ----> For ES5
+  result_p.innerHTML = `${(formattedNames(computerChoice))} beats ${(formattedNames(userChoice))}!!  You Loose!💩💩💩💩`;
 }
 
 function Draws(){
-  console.log("DRAWS");
-}
+  result_p.innerHTML = 'Draw! 📰📰 ✂✂ 🥊🥊';
+  }
 
 
 function main(){
