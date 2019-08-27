@@ -80,12 +80,15 @@ function Draws(){
 function main(){
   rock_Div.addEventListener('click',function(){
     game("r");
+    showSnackbarMessage('You Choose Rock! 🥊', 0.5);
   })
   paper_Div.addEventListener('click',function(){
     game("p");
+    showSnackbarMessage('You Choose Paper! 📰', 0.5);
   })
   scissors_Div.addEventListener('click',function(){
     game("s");
+    showSnackbarMessage('You Choose Scissor! ✂', 0.5);
   })
 }
 main();
@@ -101,6 +104,7 @@ function showSnackbarMessage(message, time) {
   setTimeout(function(){ snackbar_Div.classList.remove("show")}, time);
 };
 
+//SnackBar needs all DOM elements to work, We will let the window load before displaying the snackBar
 window.addEventListener('load', function() {
-    showSnackbarMessage('Welcome to the page', 2);
+    showSnackbarMessage('Welcome to the page', 0.7);
 })
