@@ -7,6 +7,7 @@ const result_p = document.querySelector(".result > p");
 const rock_Div = document.getElementById('r');
 const paper_Div = document.getElementById('p');
 const scissors_Div = document.getElementById('s');
+let snackbar_Div = document.getElementById('snackbar');
 
 function getComputerChoices(){
   const choices = [('r','p','s')];
@@ -88,3 +89,18 @@ function main(){
   })
 }
 main();
+
+
+//Snackbar
+function showSnackbarMessage(message, time) {
+  let snackbar_Div = document.getElementById('snackbar');
+  snackbar_Div.classList.add("show");
+  snackbar_Div.innerHTML = message;
+  time=time*1000;//time is in seconds
+  // After 2 seconds, remove the show class from DIV
+  setTimeout(function(){ snackbar_Div.classList.remove("show")}, time);
+};
+
+window.addEventListener('load', function() {
+    showSnackbarMessage('Welcome to the page', 2);
+})
